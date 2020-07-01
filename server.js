@@ -1,6 +1,5 @@
 const express = require('express');
-const { v4: uuidv4 } = require('uuid');
-const db = require('./db');
+const cors = require('cors')
 // import routes
 const testimonialsRoutes = require('./routes/testimonials.routes');
 const concertsRoutes = require('./routes/concerts.routes');
@@ -10,6 +9,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
+app.use(cors());
 
 app.use('/api', testimonialsRoutes); // add testimonials routes to server
 app.use('/api', concertsRoutes);
