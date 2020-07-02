@@ -8,7 +8,8 @@ router.route('/testimonials').get((req, res) => {
 });
 
 router.route('/testimonials/:id').get((req, res) => {
-  res.json(db.testimonials[req.params.id]);
+  const index = db.testimonials.findIndex(item => item.id === req.params.id)
+  res.json(db.testimonials[index]);
 });
 
 router.route('/testimonials').post((req, res) => {
@@ -27,12 +28,14 @@ router.route('/testimonials/:id').put((req, res) => {
     author: req.body.author, 
     text: req.body.text
   };
-  db.testimonials.splice(req.params.id-1, 1, registration);
+  const index = db.testimonials.findIndex(item => item.id === req.params.id)
+  db.testimonials.splice(index, 1, registration);
   res.json({ message: 'OK' });
 });
 
-router.route('/testimonials:id').delete((req, res) => {
-  db.testimonials.splice(req.params.id-1, 1)
+router.route('/testimonials/:id').delete((req, res) => {
+  const index = db.testimonials.findIndex(item => item.id === req.params.id)
+  db.testimonials.splice(index, 1)
   res.json({ message: 'OK' });
 });
 
