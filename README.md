@@ -1,5 +1,8 @@
-### Description:
-In this application I build my own API server 
+### Page:
+https://secure-wave-92450.herokuapp.com/
 
-### How to use:
+### Description:
+In this application I build API server 
+
+### How to use in console:
 npm run dev
