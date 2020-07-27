@@ -49,12 +49,12 @@ app.use((req, res) => {
 // const dbURI = (process.env.NODE_ENV === 'production' ? 'mongodb+srv://$${process.env.login}:${process.env.password}@cluster0.iegdp.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority' : 'mongodb://localhost:27017/NewWaveDB');
 // mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-let NW = new aws.NW({
-  accessLogin: process.env.NW_login,
-  accessPass: process.env.NW_password
+let s3 = new aws.S3({
+  accessLogin: process.env.S3_login,
+  accessPass: process.env.S3_password
 });
 
-mongoose.connect(`mongodb+srv://${process.env.NW_login}:${process.env.NW_password}@cluster0.iegdp.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb+srv://${s3.accessLogin}:${s3.accessPass}@cluster0.iegdp.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
