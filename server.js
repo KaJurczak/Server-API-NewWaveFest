@@ -3,6 +3,7 @@ const cors = require('cors')
 const path = require('path');
 const socket = require('socket.io');
 const mongoose = require('mongoose');
+const aws = require('aws-sdk');
 // import routes
 const testimonialsRoutes = require('./routes/testimonials.routes');
 const concertsRoutes = require('./routes/concerts.routes');
@@ -48,7 +49,12 @@ app.use((req, res) => {
 // const dbURI = (process.env.NODE_ENV === 'production' ? 'mongodb+srv://$${process.env.login}:${process.env.password}@cluster0.iegdp.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority' : 'mongodb://localhost:27017/NewWaveDB');
 // mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect('mongodb+srv://${process.env.login}:${process.env.password}@cluster0.iegdp.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+let NW = new aws.NW({
+  accessLogin: process.env.NW_login,
+  accessPass: process.env.NW_password
+});
+
+mongoose.connect(`mongodb+srv://${process.env.NW_login}:${process.env.NW_password}@cluster0.iegdp.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
