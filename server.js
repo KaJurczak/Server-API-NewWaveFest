@@ -34,7 +34,7 @@ app.use((req, res) => {
 })
 
 // connects backend code with the database
-const dbURI = (process.env.NODE_ENV === 'production ' ? 'mongodb+srv://${process.env.login}:${process.env.password}@cluster0.iegdp.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority' : 'mongodb://localhost:27017/NewWaveDB');
+const dbURI = (process.env.NODE_ENV === 'production' ? `mongodb+srv://${process.env.login}:${process.env.password}@cluster0.iegdp.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority` : 'mongodb://localhost:27017/NewWaveDB');
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
