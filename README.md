@@ -5,4 +5,6 @@ https://secure-wave-92450.herokuapp.com/
 In this application I build API server 
 
 ### How to use in console:
-npm run dev
+heroku open <br />
+or <br />
+npm run start
