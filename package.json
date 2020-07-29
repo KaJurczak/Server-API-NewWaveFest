@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server",
     "build": "cd client && yarn install && yarn build",
-    "start": "set NODE_ENV=production && nodemon server.js",
+    "start": "nodemon server.js",
     "test": "set NODE_ENV=test && mocha \"./{,!(node_modules)/**/}*get.test.js\"",
     "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
   },
