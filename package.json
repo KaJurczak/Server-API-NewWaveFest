@@ -16,7 +16,7 @@
     "chai-http": "4.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mocha": "^8.0.1",
+    "mocha": "^8.1.0",
     "mongo-sanitize": "1.0.1",
     "mongoose": "^5.9.25",
     "nock": "^13.0.2",
