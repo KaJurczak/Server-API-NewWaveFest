@@ -8,7 +8,9 @@
     "build": "cd client && yarn install && yarn build",
     "start": "nodemon server.js",
     "test": "set NODE_ENV=test && mocha \"./{,!(node_modules|client)/**/}*.test.js\"",
-    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
+    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "chai": "4.2.0",
@@ -21,8 +23,9 @@
     "mongoose": "^5.9.25",
     "nodemon": "^2.0.4",
     "onchange": "6.1.0",
-    "snyk": "1.235.0",
     "socket.io": "^2.3.0",
-    "uuid": "^8.2.0"
-  }
+    "uuid": "^8.2.0",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
